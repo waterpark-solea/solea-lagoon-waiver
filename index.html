@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lagoon Waterparks Waiver | Solea Mactan</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+<style>
+
+/* =========================================================
+   PAGE LAYOUT & BACKGROUND
+   ========================================================= */
+
+/* Main page styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #f4f6f9;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Main form container */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 160px 40px 40px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    position: relative;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* =========================================================
+   WATERMARK BACKGROUND
+   ========================================================= */
+
+/* Watermark image overlay */
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("watermark.png");
+    background-repeat: no-repeat;
+    background-position: right 60px top 45px; /* moved to upper-right */
+
+    background-size: auto 6.5%;
+
+    opacity: 10;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensures content appears above watermark */
+.container > * {
+    position: relative;
+    z-index: 1;
+}
+/* =========================================================
+   HEADINGS & TYPOGRAPHY
+   ========================================================= */
+
+/* Main title */
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #1f3b57;
+    margin-bottom: 8px;
+}
+
+/* Subtitle heading */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Supporting subtitle text */
+.subtitle {
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 25px;
+}
+
+/* =========================================================
+   WAIVER CONTENT
+   ========================================================= */
+
+/* Waiver paragraph container */
+.waiver-text {
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* Individual waiver paragraphs */
+.waiver-text p {
+    margin-bottom: 14px;
+    text-align: justify;
+}
+
+/* Legal bullet formatting */
+.legal-list {
+    margin: 15px 0 20px 25px;
+    padding-left: 20px;
+}
+
+/* Legal list items */
+.legal-list li {
+    margin-bottom: 12px;
+    padding-left: 6px;
+    text-align: justify;
+}
+
+/* =========================================================
+   SAFETY RULES BOX
+   ========================================================= */
+
+/* Safety guideline container */
+.rules {
+    background: #fbf7e8;
+    border: 1px solid #e6dcc2;
+    border-radius: 14px;
+    padding: 22px 28px;
+    margin-bottom: 30px;
+}
+
+/* Safety box header */
+.rules-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: #1f3b57;
+    margin-bottom: 15px;
+}
+
+/* Safety rule list */
+.rules ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual safety rule */
+.rules li {
+    font-size: 14px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    padding-left: 18px;
+    position: relative;
+}
+
+/* Custom circular bullet */
+.rules li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: #1f3b57;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+/* Highlighted safety rule */
+.rules .highlight {
+    font-weight: 600;
+    color: #b8860b;
+}
+
+/* =========================================================
+   FORM INPUT STYLING
+   ========================================================= */
+
+/* Generic form group spacing */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Standard text/date/number inputs */
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   PARTICIPANT SECTION
+   ========================================================= */
+
+/* Participant row layout grid */
+.participant-row {
+    display: grid;
+    grid-template-columns: auto 1.5fr 1.5fr 1fr auto;
+    gap: 12px;
+    align-items: start;
+}
+
+/* Participant numbering indicator */
+.participant-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #1f3b57;
+    font-size: 14px;
+    opacity: 0.8;
+    min-width: 24px;
+    display: flex;
+    align-items: center;
+    height: 42px;
+}
+
+/* Participant block spacing */
+.participant-item {
+    margin-bottom: 12px;
+}
+
+/* Ensure inline validation stacks correctly */
+/* Only the wrapper should be flex */
+.participant-row .age-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Remove participant button */
+.remove-btn {
+    background: transparent;
+    color: #c62828;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+.remove-btn:hover {
+    color: #8e0000;
+}
+
+/* Placeholder column for alignment (row 1) */
+.remove-placeholder {
+    width: 24px;
+}
+
+/* Age classification indicator */
+.age-status {
+    display: block;
+    min-height: 18px;
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+/* Adult classification color */
+.age-status.adult { color: #2e7d32; }
+
+/* Minor classification color */
+.age-status.minor { color: #c62828; }
+
+/* =========================================================
+   SIGNATURE SECTION
+   ========================================================= */
+
+/* Signature container box */
+.signature-box {
+    position: relative;
+    border: 2px solid #d0d6dc;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background: #fafafa;
+    overflow: hidden;
+}
+
+/* Signature placeholder text */
+.signature-box::before {
+    content: "Sign inside this box";
+    position: absolute;
+    color: #9aa3af;
+    font-size: 13px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* =========================================================
+   HIDE PLACEHOLDER WHEN USER STARTS SIGNING
+   This removes the text once the guest signs
+========================================================= */
+.signature-box.signed::before {
+    display: none;
+}
+
+/* =========================================================
+   BUTTON STYLING
+   ========================================================= */
+
+/* Primary buttons */
+button {
+    background: #1f3b57;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:hover { background: #162c42; }
+
+/* Clear signature button */
+.clear-btn {
+    background: #b8860b;
+}
+
+.clear-btn:hover {
+    background: #9c730a;
+}
+
+/* =========================================================
+   PRIVACY SECTION
+   ========================================================= */
+
+/* Privacy container box */
+.privacy-box {
+    background: #f4f6f9;
+    border: 1px solid #d6dde6;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 20px;
+}
+
+/* Privacy header */
+.privacy-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* Privacy descriptive text */
+.privacy-text {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Privacy validation message */
+.privacy-error {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #c62828;
+    min-height: 16px;
+}
+
+/* =========================================================
+   VALIDATION STYLING
+   ========================================================= */
+
+/* Red border for invalid inputs */
+.input-error {
+    border-color: #c62828 !important;
+}
+
+/* Error message styling */
+.field-error {
+    font-size: 12px;
+    font-weight: 600;
+    color: #c62828;
+    margin-top: 4px;
+    display: block;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Mobile stacking layout */
+@media(max-width:768px){
+    .participant-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   CUSTOM DROPDOWN (Guest Type / Room Number)
+   ========================================================= */
+
+
+/* Custom styled select dropdown */
+.select-wrapper select {
+    width: 100%;
+    padding: 10px 35px 10px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #333;
+    appearance: none;
+    box-sizing: border-box;
+}
+
+/* Custom dropdown arrow */
+.select-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #1f3b57;
+    border-bottom: 2px solid #1f3b57;
+    transform: translateY(-60%) rotate(45deg);
+    pointer-events: none;
+}
+
+/* Red border override for signature error */
+.signature-box.input-error {
+    border-color: #c62828 !important;
+}
+
+/* =========================================================
+   GUARDIAN INPUT WIDTH CONTROL
+   Reduces Parent / Guardian textbox size
+========================================================= */
+
+#guardianInput {
+    width: 50%;
+    max-width: 400px;
+    display: block;
+}
+
+/* =========================================================
+   GUARDIAN NOTE TEXT
+   Controls the size of the participant reference text
+========================================================= */
+
+.guardian-note {
+    display: block;
+    margin-top: 6px;
+    font-size: 16px;
+    color: #666;
+}
+
+/* Utility class to hide elements */
+.hidden {
+    display: none;
+}
+
+/* Room number wrapper width */
+.room-wrapper {
+    width: 25%;
+}
+
+/* Ensures dropdown and arrow remain aligned after validation */
+.select-wrapper {
+    position: relative;
+    width: 25%;
+}
+
+canvas {
+    width: 100%;
+    height: 240px;
+}
+
+/* Disable number input scroll change */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- =========================================================
+     HEADER SECTION
+     Displays main title and subtitle
+     ========================================================= -->
+
+<h1>LAGOON WATERPARKS</h1>
+<h2>SOLEA MACTAN CEBU RESORT</h2>
+<p class="subtitle">
+    A COMPLETED WAIVER IS REQUIRED TO PLAY AT LAGOON WATERPARKS
+</p>
+
+<!-- =========================================================
+     SAFETY GUIDELINES SECTION
+     Displays important rules before waiver agreement
+     ========================================================= -->
+
+<div class="rules">
+    <div class="rules-header">SAFETY GUIDELINES</div>
+    <ul>
+        <li>No Food or Beverages</li>
+        <li>No Pets</li>
+        <li>No Shoes/Slippers Inside the Lagoon</li>
+        <li class="highlight">Strictly No Jumping</li>
+    </ul>
+</div>
+
+<!-- =========================================================
+     WAIVER LEGAL CONTENT
+     Full legal acknowledgment text
+     ========================================================= -->
+
+<div class="waiver-text">
+
+<p>
+In consideration of being allowed to enter the play area and/or participate in any activities or events at <strong>LAGOON WATERPARKS</strong>, the undersigned, on his or her own behalf and on behalf of the minor identified below, hereby acknowledges, understands, and agrees to the following:
+</p>
+
+<p>
+I, for myself and/or for my child or ward, voluntarily sign this Waiver and Assumption of Risk in consideration of the opportunity to use the facilities and participate in any activities at <strong>LAGOON WATERPARKS</strong>.
+</p>
+
+<p>
+I acknowledge that there are inherent dangers and risks associated with the activities at <strong>LAGOON WATERPARKS</strong>, including but not limited to the risk of personal injury. I voluntarily assume all such risks on behalf of myself and/or my child or ward.
+</p>
+
+<p>
+I agree to comply with all safety instructions, policies, and guidelines provided by the Resort. I understand that failure to follow safety instructions may result in accidents, injury, or removal from the facility.
+</p>
+
+<ol class="legal-list" type="A">
+    <li>
+        The Resort shall not be held liable for any injuries or accidents that may occur during participation in activities at <strong>LAGOON WATERPARKS</strong>.
+    </li>
+    <li>
+        The Resort shall be held free and harmless from any liability, loss, damage, or injury to third parties caused by my intentional or negligent acts.
+    </li>
+    <li>
+        In view of the known and potential risks, I expressly agree to accept full responsibility for any injury or harm that may occur. I hereby waive, release, and renounce any claims against the Resort arising from any accident or incident occurring during my participation. I further agree that any legal action shall be filed exclusively in the proper courts of Cebu City, to the exclusion of all other courts.
+    </li>
+</ol>
+
+<p>
+I hereby certify that I am over eighteen (18) years of age and have carefully read and fully understand the foregoing Waiver and Assumption of Risk. I acknowledge that I have been given the opportunity to ask questions prior to signing this agreement.
+</p>
+
+<p>
+By signing this document, I voluntarily assume all risks and waive and release any substantial rights I may have against the Resort. I confirm that this document is accurate and that I fully understand its terms and conditions.
+</p>
+
+</div>
+
+<!-- =========================================================
+     GUEST TYPE SELECTION
+     Used for operational classification
+     ========================================================= -->
+
+<h3>Guest Type</h3>
+
+<div class="form-group guest-type-row">
+    <div class="field-wrapper">
+        <div class="select-wrapper">
+            <select id="guestType" name="guest_type" required>
+                <option value="" selected>Select Guest Type</option>
+                <option value="Day Use">Day Use</option>
+                <option value="In-House Guest">In-House Guest</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+     ROOM NUMBER (Visible for In-House Guests Only)
+     ========================================================= -->
+
+<div class="form-group room-number-row hidden" id="roomNumberGroup">
+    <h3>Room Number</h3>
+
+    <div class="room-wrapper">
+        <input type="text"
+    id="roomNumber"
+    name="room_number"
+    placeholder="Room #"
+    inputmode="numeric"
+    maxlength="3" />
+    </div>
+
+    <small id="roomError" class="room-error"></small>
+</div>
+
+<!-- =========================================================
+     PARTICIPANTS SECTION
+     Handles dynamic participant entries
+     ========================================================= -->
+
+<h3>Participants</h3>
+
+<div id="participants-wrapper">
+    <div class="participant-item">
+        <div class="participant-row">
+            <span class="participant-number">1.</span>
+
+            <input type="text" name="first_name[]" placeholder="First Name" required>
+            <input type="text" name="last_name[]" placeholder="Last Name" required>
+
+            <div class="age-wrapper">
+                <input type="number"
+       name="age[]"
+       placeholder="Age"
+       min="1"
+       max="99"
+       inputmode="numeric"
+       required
+       oninput="checkAge(this)">
+                <small class="age-status"></small>
+            </div>
+
+            <div class="remove-placeholder"></div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="add-btn" onclick="addParticipant()">
+    + Add Another Participant
+</button>
+
+<!-- =========================================================
+     DYNAMIC GUARDIAN SECTION (Auto-generated per minor)
+     ========================================================= -->
+
+<div id="guardianContainer"></div>
+
+<!-- =========================================================
+     SIGNATURE SECTION
+     ========================================================= -->
+
+<h3>Acknowledgment & Signature</h3>
+
+<p class="signature-note">
+By signing below, I acknowledge that I have read, understood, and agreed to the terms and conditions of this Waiver and Assumption of Risk.
+</p>
+
+<div class="signature-box">
+    <canvas id="signature-pad"></canvas>
+</div>
+
+<button type="button" class="clear-btn" onclick="clearSignature()">
+    Clear Signature
+</button>
+
+<!-- =========================================================
+     DATA PRIVACY CONSENT
+     ========================================================= -->
+
+<div class="form-group privacy-box">
+
+    <label class="privacy-title">
+        <input type="checkbox" id="privacyConsent">
+        <strong>DATA PRIVACY CONSENT</strong>
+    </label>
+
+    <p class="privacy-text">
+        In compliance with the Data Privacy Act of 2012 (Republic Act No. 10173),
+        I hereby give my voluntary consent to Solea Mactan Cebu Resort to collect,
+        process, store, and use my personal information and the personal information
+        of the participant(s) listed in this waiver for legitimate business purposes,
+        including but not limited to safety documentation, security monitoring,
+        incident reporting, operational requirements, and legal compliance.
+    </p>
+
+    <p class="privacy-text">
+        I understand that my personal data will be handled with strict confidentiality
+        and will not be shared with unauthorized third parties, except when required
+        by law or by competent authorities.
+    </p>
+
+    <small id="privacyError" class="privacy-error"></small>
+
+</div>
+
+<button type="button" onclick="validateAndSubmit()">
+    Submit Waiver
+</button>
+
+</div> <!-- END container -->
+
+<script>
+
+/* =========================================================
+   LAGOON WATERPARKS WAIVER SYSTEM SCRIPT
+   FINAL STABLE VERSION
+========================================================= */
+
+let guestTypeSelect;
+let roomNumberGroup;
+let roomNumberInput;
+let signaturePad;
+let canvas;
+
+/* ================= DOM READY ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* ================= SIGNATURE PAD ================= */
+
+    canvas = document.getElementById("signature-pad");
+    signaturePad = new SignaturePad(canvas);
+	canvas.addEventListener("touchstart", function(e){
+    e.preventDefault();
+},{passive:false});
+
+canvas.addEventListener("touchmove", function(e){
+    e.preventDefault();
+},{passive:false});
+
+    signaturePad.addEventListener("beginStroke", () => {
+
+    const sigBox = document.querySelector(".signature-box");
+
+    sigBox.classList.remove("input-error"); // remove red border
+    sigBox.classList.add("signed"); // hide placeholder text
+
+});
+
+
+    /* =========================================================
+       CLEAR PRIVACY ERROR WHEN USER CHECKS THE BOX
+    ========================================================= */
+
+    document.getElementById("privacyConsent").addEventListener("change", function () {
+
+        if (this.checked) {
+            document.getElementById("privacyError").textContent = "";
+        }
+
+    });
+
+
+    /* =========================================================
+   RESIZE CANVAS PROPERLY
+   Fixes drawing only working on part of the signature pad
+========================================================= */
+function resizeCanvas() {
+
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+
+    const width = canvas.offsetWidth;
+    const height = canvas.offsetHeight;
+
+    canvas.width = width * ratio;
+    canvas.height = height * ratio;
+
+    canvas.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    signaturePad.clear();
+
+}
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    /* ================= ROOM / GUEST TYPE ================= */
+
+    guestTypeSelect = document.getElementById("guestType");
+    roomNumberGroup = document.getElementById("roomNumberGroup");
+    roomNumberInput = document.getElementById("roomNumber");
+
+    function toggleRoomField() {
+    if (guestTypeSelect.value === "In-House Guest") {
+        roomNumberGroup.classList.remove("hidden");
+    } else {
+        roomNumberGroup.classList.add("hidden");
+        roomNumberInput.value = "";
+        clearFieldError(roomNumberInput);
+    }
+}
+
+    guestTypeSelect.addEventListener("change", toggleRoomField);
+	
+	/* =========================================================
+   CLEAR GUEST TYPE ERROR WHEN USER SELECTS A VALID OPTION
+   This prevents the red error from staying after selection
+	========================================================= */
+
+	guestTypeSelect.addEventListener("change", function () {
+
+    // If user selects a valid option (not placeholder)
+    if (this.value !== "") {
+
+        // Remove red border and error message
+        clearFieldError(this);
+    }
+
+});
+    toggleRoomField();
+
+    /* ================= ROOM INPUT BEHAVIOR ================= */
+
+// Sanitize while typing (no validation yet)
+roomNumberInput.addEventListener("input", function () {
+
+    if (guestTypeSelect.value !== "In-House Guest") return;
+
+    // Allow only numbers, max 3 digits
+    this.value = this.value.replace(/\D/g, "").slice(0, 3);
+
+    // Remove error styling while typing
+    this.classList.remove("input-error");
+    this.style.borderColor = "";
+    clearFieldError(this);
+});
+
+
+// Validate when user leaves the field
+roomNumberInput.addEventListener("blur", function () {
+
+    if (guestTypeSelect.value !== "In-House Guest") return;
+
+    const roomRaw = this.value.trim();
+
+    if (!roomRaw) return; // Don't validate empty field yet
+
+    if (!/^\d{3}$/.test(roomRaw)) {
+        showError(this, "Room number must be 3 digits.");
+        return;
+    }
+
+    const roomValue = parseInt(roomRaw);
+
+    if (roomValue < 111 || roomValue > 998) {
+        showError(this, "Invalid room number (111–998 only).");
+    } else {
+        clearFieldError(this);
+        this.style.borderColor = "#2e7d32"; // Green border when valid
+    }
+});
+
+/* =========================================================
+   UPDATE GUARDIAN LIST WHEN PARTICIPANT NAMES CHANGE
+   This ensures guardian list refreshes when typing names
+========================================================= */
+
+document.addEventListener("input", function(e){
+
+    if (
+        e.target.name === "first_name[]" ||
+        e.target.name === "last_name[]"
+    ) {
+        updateGuardianVisibility();
+    }
+
+});
+
+});
+
+/* ================= PARTICIPANTS ================= */
+
+let participantCount = 1;
+const maxParticipants = 10;
+
+function addParticipant() {
+
+    if (participantCount >= maxParticipants) {
+        alert("Maximum of 10 participants allowed.");
+        return;
+    }
+
+    participantCount++;
+	
+
+    const wrapper = document.getElementById("participants-wrapper");
+
+    const div = document.createElement("div");
+    div.className = "participant-item";
+
+    div.innerHTML = `
+        <div class="participant-row">
+            <span class="participant-number">${participantCount}.</span>
+
+            <input type="text" name="first_name[]" placeholder="First Name" required>
+            <input type="text" name="last_name[]" placeholder="Last Name" required>
+
+            <div class="age-wrapper">
+                <input type="number"
+       name="age[]"
+       placeholder="Age"
+       min="1"
+       max="99"
+       inputmode="numeric"
+       required
+       oninput="checkAge(this)">
+                <small class="age-status"></small>
+            </div>
+
+            <button type="button" class="remove-btn" onclick="removeParticipant(this)">✕</button>
+        </div>
+    `;
+
+    wrapper.appendChild(div);
+}
+
+function removeParticipant(button) {
+    button.closest(".participant-item").remove();
+    participantCount = document.querySelectorAll(".participant-item").length;
+
+    document.querySelectorAll(".participant-number")
+        .forEach((num, index) => num.textContent = (index + 1) + ".");
+
+    updateGuardianVisibility();
+}
+
+/* ================= AGE CHECK ================= */
+/* ================= AGE CHECK (LIVE VALIDATION UPGRADED) ================= */
+/* ================= AGE CHECK (2-DIGIT LIMIT ENABLED) ================= */
+/* PURPOSE:
+   - Limits age to 2 digits only
+   - Prevents values above 99
+   - Live validation
+   - Keeps Minor / Adult logic
+*/
+
+function checkAge(input) {
+
+    /* ---------------------------------------------------------
+       FORCE MAX 2 DIGITS WHILE TYPING
+    --------------------------------------------------------- */
+    input.value = input.value.replace(/\D/g, "").slice(0, 2);
+
+    const ageValue = input.value.trim();
+    const age = parseInt(ageValue);
+    const status = input.closest(".age-wrapper").querySelector(".age-status");
+
+    if (!status) return;
+
+    /* ---------------------------------------------------------
+       CLEAR ANY PREVIOUS ERROR FIRST
+       (THIS FIXES YOUR ISSUE)
+    --------------------------------------------------------- */
+    clearFieldError(input);
+
+    /* ---------------------------------------------------------
+       INVALID AGE
+    --------------------------------------------------------- */
+    if (!ageValue || isNaN(age) || age <= 0) {
+
+        showError(input, "Age must be 1–99 only.");
+        status.textContent = "";
+        status.className = "age-status";
+        updateGuardianVisibility();
+        return;
+    }
+
+    /* ---------------------------------------------------------
+       EXTRA SAFETY: Prevent > 99
+    --------------------------------------------------------- */
+    if (age > 99) {
+
+        showError(input, "Age must be 1–99 only.");
+        status.textContent = "";
+        status.className = "age-status";
+        return;
+    }
+
+    /* ---------------------------------------------------------
+       VALID AGE
+    --------------------------------------------------------- */
+
+    if (age < 18) {
+    status.textContent = "Minor (Guardian Required)";
+    status.className = "age-status minor";
+} else {
+    status.textContent = "Adult";
+    status.className = "age-status adult";
+}
+
+    updateGuardianVisibility();
+}
+/* ================= GUARDIAN ================= */
+/* UPDATED: Shows FULL participant names instead of only first names */
+
+function updateGuardianVisibility() {
+
+    const ages = document.querySelectorAll('input[name="age[]"]');
+    const firstNames = document.querySelectorAll('input[name="first_name[]"]');
+    const lastNames = document.querySelectorAll('input[name="last_name[]"]');
+    const guardianContainer = document.getElementById("guardianContainer");
+
+    /* Preserve existing guardian name */
+    let existingGuardianName = "";
+    const existingGuardianInput = document.getElementById("guardianInput");
+
+    if (existingGuardianInput) {
+        existingGuardianName = existingGuardianInput.value;
+    }
+
+    guardianContainer.innerHTML = "";
+
+    const minors = [];
+
+    ages.forEach((input, index) => {
+
+        const age = parseInt(input.value);
+
+        if (!isNaN(age) && age > 0 && age < 18) {
+
+            const first = firstNames[index].value.trim();
+            const last = lastNames[index].value.trim();
+
+            /* Combine first + last name */
+            let name = `${first} ${last}`.trim();
+
+            /* If name not yet typed, fallback to participant number */
+            if (!name) {
+                name = `#${index + 1}`;
+            }
+
+            minors.push(name);
+        }
+    });
+
+    if (minors.length > 0) {
+
+        const guardianDiv = document.createElement("div");
+        guardianDiv.className = "form-group guardian-box";
+
+        guardianDiv.innerHTML = `
+            <h3>Parent / Guardian for Minor Participant(s)</h3>
+
+            <input type="text"
+                   id="guardianInput"
+                   placeholder="Full Name"
+                   value="${existingGuardianName}"
+                   required>
+
+            <small class="guardian-note">
+                This guardian represents Participant(s): ${minors.join(", ")}.
+            </small>
+
+            <small id="guardianError" class="guardian-error"></small>
+        `;
+
+        guardianContainer.appendChild(guardianDiv);
+    }
+}
+
+
+/* =========================================================
+   SHOW FIELD ERROR
+   FIXED STRUCTURE – prevents dropdown validation failure
+	========================================================= */
+
+	function showError(inputElement, message) {
+
+    if (!inputElement) return;
+
+    // Add red border
+    inputElement.classList.add("input-error");
+	inputElement.focus();
+
+    let wrapper = inputElement.closest(".field-wrapper");
+
+    // If wrapper does not exist, create one
+    if (!wrapper) {
+
+        wrapper = document.createElement("div");
+        wrapper.className = "field-wrapper";
+        wrapper.style.display = "flex";
+        wrapper.style.flexDirection = "column";
+
+        inputElement.parentNode.insertBefore(wrapper, inputElement);
+        wrapper.appendChild(inputElement);
+    }
+
+    // Remove existing error under THIS input only
+    const existingError = wrapper.querySelector(".field-error");
+    if (existingError) existingError.remove();
+
+    // Create error message element
+    const error = document.createElement("small");
+    error.className = "field-error";
+    error.textContent = message;
+
+    wrapper.appendChild(error);
+}
+
+function clearFieldError(inputElement) {
+
+    if (!inputElement) return;
+
+    inputElement.classList.remove("input-error");
+
+    const wrapper = inputElement.closest(".field-wrapper");
+    if (!wrapper) return;
+
+    const existingError = wrapper.querySelector(".field-error");
+    if (existingError) existingError.remove();
+}
+
+function clearAllErrors() {
+
+    document.querySelectorAll(".input-error")
+        .forEach(el => el.classList.remove("input-error"));
+
+    document.querySelectorAll(".field-error")
+        .forEach(el => el.remove());
+}
+
+/* ================= FINAL VALIDATION ================= */
+
+function validateAndSubmit() {
+
+    clearAllErrors();
+
+    const privacyCheckbox = document.getElementById("privacyConsent");
+    const guardianInput = document.getElementById("guardianInput");
+
+    const firstNames = document.querySelectorAll('input[name="first_name[]"]');
+    const lastNames = document.querySelectorAll('input[name="last_name[]"]');
+    const ages = document.querySelectorAll('input[name="age[]"]');
+
+    if (guestTypeSelect.value === "") {
+    showError(guestTypeSelect, "Guest Type is required.");
+    return;
+}
+
+    /* =========================================================
+   VALIDATION SECTION (UPDATED - Reactive Error Clearing)
+========================================================= */
+
+if (guestTypeSelect.value === "In-House Guest") {
+
+    const roomRaw = roomNumberInput.value.trim();
+    const roomValue = parseInt(roomRaw);
+
+    if (!roomRaw) {
+
+        showError(roomNumberInput, "Room Number is required.");
+
+        /* Auto-clear when user types */
+        roomNumberInput.addEventListener("input", function handler() {
+            if (this.value.trim() !== "") {
+                clearFieldError(this);
+                this.removeEventListener("input", handler);
+            }
+        });
+
+        return;
+    }
+
+    if (!/^\d{3}$/.test(roomRaw) || roomValue < 111 || roomValue > 998) {
+
+        showError(roomNumberInput, "Invalid room number (111–998 only).");
+
+        /* Auto-clear when corrected */
+        roomNumberInput.addEventListener("input", function handler() {
+
+            const val = this.value.trim();
+            const num = parseInt(val);
+
+            if (/^\d{3}$/.test(val) && num >= 111 && num <= 998) {
+                clearFieldError(this);
+                this.removeEventListener("input", handler);
+            }
+        });
+
+        return;
+    }
+}
+
+let hasMinor = false;
+
+for (let i = 0; i < firstNames.length; i++) {
+
+    if (!firstNames[i].value.trim()) {
+
+        showError(firstNames[i], "First Name is required.");
+
+        firstNames[i].addEventListener("input", function handler() {
+            if (this.value.trim() !== "") {
+                clearFieldError(this);
+                this.removeEventListener("input", handler);
+            }
+        });
+
+        return;
+    }
+
+    if (!lastNames[i].value.trim()) {
+
+        showError(lastNames[i], "Last Name is required.");
+
+        lastNames[i].addEventListener("input", function handler() {
+            if (this.value.trim() !== "") {
+                clearFieldError(this);
+                this.removeEventListener("input", handler);
+            }
+        });
+
+        return;
+    }
+
+    const ageValue = ages[i].value.trim();
+const age = parseInt(ageValue);
+
+/* =========================================================
+   AGE VALIDATION (SUBMIT LEVEL – STRICT)
+========================================================= */
+if (!/^\d{1,2}$/.test(ageValue)) {
+
+    showError(ages[i], "Age must be 1–99 only.");
+
+    ages[i].addEventListener("input", function handler() {
+        if (/^\d{1,2}$/.test(this.value.trim())) {
+            clearFieldError(this);
+            this.removeEventListener("input", handler);
+        }
+    });
+
+    return;
+}
+
+if (age <= 0 || age > 99) {
+
+    showError(ages[i], "Age must be 1–99 only.");
+
+    return;
+}
+
+    if (age < 18) hasMinor = true;
+}
+
+if (hasMinor) {
+    if (!guardianInput || !guardianInput.value.trim()) {
+
+        showError(guardianInput, "Guardian name is required for minor participant(s).");
+
+        guardianInput.addEventListener("input", function handler() {
+            if (this.value.trim() !== "") {
+                clearFieldError(this);
+                this.removeEventListener("input", handler);
+            }
+        });
+
+        return;
+    }
+}
+/* =========================================================
+   PRIVACY CONSENT VALIDATION
+========================================================= */
+
+if (!privacyCheckbox.checked) {
+
+    document.getElementById("privacyError").textContent =
+        "You must agree to the Data Privacy Consent.";
+
+    document.querySelector(".privacy-box").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    return;
+}
+if (signaturePad.isEmpty()) {
+
+    const sigBox = document.querySelector(".signature-box");
+
+    sigBox.classList.add("input-error");
+
+    sigBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    return;
+}
+
+alert("Form submitted successfully!");
+
+resetWaiverForm();
+} // ← CLOSE validateAndSubmit FUNCTION
+
+
+/* =========================================================
+   CLEAR SIGNATURE FUNCTION
+   Clears the signature pad when button is pressed
+========================================================= */
+
+function clearSignature() {
+
+    if (signaturePad) {
+    signaturePad.clear();
+}
+
+    const sigBox = document.querySelector(".signature-box");
+
+    if (sigBox) {
+        sigBox.classList.remove("input-error"); // remove error border
+        sigBox.classList.remove("signed"); // show placeholder again
+    }
+
+}
+
+/* =========================================================
+   RESET WAIVER FORM
+   Clears all inputs after successful submission
+========================================================= */
+function resetWaiverForm() {
+
+    /* Reset guest type */
+    document.getElementById("guestType").value = "";
+
+    /* Hide room field */
+    document.getElementById("roomNumberGroup").classList.add("hidden");
+    document.getElementById("roomNumber").value = "";
+
+    /* Reset participants */
+    const wrapper = document.getElementById("participants-wrapper");
+
+    wrapper.innerHTML = `
+        <div class="participant-item">
+            <div class="participant-row">
+                <span class="participant-number">1.</span>
+
+                <input type="text" name="first_name[]" placeholder="First Name" required>
+                <input type="text" name="last_name[]" placeholder="Last Name" required>
+
+                <div class="age-wrapper">
+                    <input type="number"
+                        name="age[]"
+                        placeholder="Age"
+                        min="1"
+                        max="99"
+                        inputmode="numeric"
+                        required
+                        oninput="checkAge(this)">
+                    <small class="age-status"></small>
+                </div>
+
+                <div class="remove-placeholder"></div>
+            </div>
+        </div>
+    `;
+
+    participantCount = 1;
+
+    /* Clear guardian section */
+    document.getElementById("guardianContainer").innerHTML = "";
+
+    /* Clear signature */
+    clearSignature();
+
+    /* Reset privacy checkbox */
+    document.getElementById("privacyConsent").checked = false;
+    document.getElementById("privacyError").textContent = "";
+
+    /* Scroll back to top */
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+</script>
