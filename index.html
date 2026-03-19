@@ -1312,13 +1312,10 @@ const payload = {
 
 fetch("https://script.google.com/macros/s/AKfycbzW-tB97UEzLWb50Fy7nB-zMW09xWyn5xHjgPTf24KBiQfcJrWPd1apfbQj-KHR7MQC/exec", {
     method: "POST",
-    body: JSON.stringify(payload),
-    headers: {
-        "Content-Type": "application/json"
-    }
+    mode: "no-cors", // 🔥 BYPASS CORS
+    body: JSON.stringify(payload)
 })
-.then(response => response.json())
-.then(data => {
+.then(() => {
     alert("Waiver submitted successfully!");
     resetWaiverForm();
 })
