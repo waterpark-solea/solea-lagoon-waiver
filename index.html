@@ -1317,20 +1317,14 @@ fetch("https://script.google.com/macros/s/AKfycbzW-tB97UEzLWb50Fy7nB-zMW09xWyn5x
         "Content-Type": "application/json"
     }
 })
-.then(response => response.text())
+.then(response => response.json())
 .then(data => {
-
     alert("Waiver submitted successfully!");
-
     resetWaiverForm();
-
 })
 .catch(error => {
-
     alert("Submission failed. Please try again.");
-
     console.error(error);
-
 });
 	}  // END validateAndSubmit()
 
