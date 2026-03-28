@@ -1088,6 +1088,8 @@ const payload = {
     agreementAccepted: "Yes",
     signatureUrl: signatureData
 };
+	// ✅ ADD THIS NEW DEBUG LINE TO PRINT ALL SENT DATA
+console.log("SENDING FULL PAYLOAD:", payload);
 
 fetch("https://script.google.com/macros/s/AKfycbzW-tB97UEzLWb50Fy7nB-zMW09xWyn5xHjgPTf24KBiQfcJrWPd1apfbQj-KHR7MQC/exec", {
     method: "POST",
