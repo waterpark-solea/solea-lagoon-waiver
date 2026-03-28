@@ -455,15 +455,22 @@ button:disabled { opacity: 0.6; cursor: wait; }
    CUSTOM DROPDOWN (Guest Type / Room Number)
    ========================================================= */
 
+/* ✅ FIXED: Guest Type dropdown now proper size, no cut-off text */
+.select-wrapper {
+    position: relative;
+    width: auto;
+    min-width: 280px;
+    max-width: 350px;
+}
 
 /* Custom styled select dropdown */
 .select-wrapper select {
     width: 100%;
-    padding: 10px 35px 10px 10px;
+    padding: 12px 45px 12px 14px;
     border-radius: 8px;
     border: 1px solid #ccc;
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     background-color: #ffffff;
     color: #333;
     appearance: none;
@@ -474,7 +481,7 @@ button:disabled { opacity: 0.6; cursor: wait; }
 .select-wrapper::after {
     content: "";
     position: absolute;
-    right: 14px;
+    right: 16px;
     top: 50%;
     width: 8px;
     height: 8px;
@@ -482,11 +489,6 @@ button:disabled { opacity: 0.6; cursor: wait; }
     border-bottom: 2px solid #1f3b57;
     transform: translateY(-60%) rotate(45deg);
     pointer-events: none;
-}
-
-/* Red border override for signature error */
-.signature-box.input-error {
-    border-color: #c62828 !important;
 }
 
 /* =========================================================
