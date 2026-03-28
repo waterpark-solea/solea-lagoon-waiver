@@ -28,7 +28,7 @@ body {
 .container {
     max-width: 900px;
     margin: auto;
-    padding: 160px 40px 40px 40px;
+    padding: 40px 20px;
     border-radius: 20px;
     box-shadow: 0 10px 35px rgba(0,0,0,0.15);
     position: relative;
@@ -393,14 +393,56 @@ button:hover { background: #162c42; }
 }
 
 /* =========================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (UPDATED MOBILE FIX)
    ========================================================= */
 
-/* Mobile stacking layout */
-@media(max-width:768px){
+@media (max-width: 768px) {
+
+    /* Stack participant fields */
     .participant-row {
         grid-template-columns: 1fr;
     }
+
+    /* Fix container spacing */
+    .container {
+        padding: 20px 15px;
+    }
+
+    /* Fix headings */
+    h1 {
+        font-size: 22px;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* Fix watermark */
+    .container::before {
+        background-position: center top;
+        background-size: 30%;
+        opacity: 0.05;
+    }
+
+    /* Fix dropdown + room width */
+    .room-wrapper,
+    .select-wrapper {
+        width: 100%;
+    }
+
+    /* Fix guardian input */
+    #guardianInput {
+        width: 100%;
+    }
+
 }
 
 /* =========================================================
