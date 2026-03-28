@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Lagoon Waterparks Waiver | Solea Mactan</title>
+<!-- ✅ Fixed favicon 404 error -->
+<link rel="icon" href="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
@@ -40,7 +42,7 @@ body {
     overflow: hidden;
 }
 
-/* ✅ NEW: Clean header logo */
+/* ✅ Clean header logo */
 .header-logo {
     text-align: center;
     margin-bottom: 20px;
@@ -193,9 +195,9 @@ input[type="number"] {
 
 .participant-number {
     font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
     font-weight: 600;
     color: #1f3b57;
-    font-size: 14px;
     opacity: 0.8;
     min-width: 24px;
     display: flex;
@@ -517,7 +519,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 <form id="waiverForm">
 
-<!-- ✅ New Clean Header Logo -->
+<!-- Clean Header Logo -->
 <div class="header-logo">
     <img src="watermark.png" alt="Solea Hotels & Resorts">
 </div>
@@ -794,6 +796,8 @@ document.addEventListener("input", function(e){
         e.target.name === "last_name[]"
     ) {
         updateGuardianVisibility();
+        // ✅ Auto-clear errors for dynamically added participants
+        if(e.target.value.trim()) clearFieldError(e.target);
     }
 });
 
@@ -924,6 +928,10 @@ function updateGuardianVisibility() {
             <small id="guardianError" class="guardian-error"></small>
         `;
         guardianContainer.appendChild(guardianDiv);
+        // Auto-clear guardian error when user types
+        document.getElementById("guardianInput").addEventListener("input", function() {
+            if(this.value.trim()) clearFieldError(this);
+        });
     }
 }
 
@@ -1056,12 +1064,18 @@ if (signaturePad.isEmpty()) {
     return;
 }
 
+// ✅ Fixed participant array creation with fail-safes
 const participants = Array.from(document.querySelectorAll('.participant-item')).map(item => {
-  return {
-    firstName: item.querySelector('[name="first_name[]"]').value,
-    lastName: item.querySelector('[name="last_name[]"]').value,
-    age: item.querySelector('[name="age[]"]').value,
-    classification: item.querySelector('.age-status').textContent
+  try {
+    return {
+      firstName: item.querySelector('[name="first_name[]"]')?.value || "",
+      lastName: item.querySelector('[name="last_name[]"]')?.value || "",
+      age: item.querySelector('[name="age[]"]')?.value || "",
+      classification: item.querySelector('.age-status')?.textContent || ""
+    }
+  } catch (err) {
+    console.error("Failed to parse participant:", err);
+    return {firstName: "", lastName: "", age: "", classification: ""};
   }
 });
 
@@ -1088,7 +1102,7 @@ const payload = {
     agreementAccepted: "Yes",
     signatureUrl: signatureData
 };
-	// ✅ ADD THIS NEW DEBUG LINE TO PRINT ALL SENT DATA
+
 console.log("SENDING FULL PAYLOAD:", payload);
 
 fetch("https://script.google.com/macros/s/AKfycbzW-tB97UEzLWb50Fy7nB-zMW09xWyn5xHjgPTf24KBiQfcJrWPd1apfbQj-KHR7MQC/exec", {
@@ -1160,3 +1174,5 @@ function resetWaiverForm() {
 }
 
 </script>
+</body>
+</html>
