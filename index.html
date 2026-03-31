@@ -1092,34 +1092,48 @@ const timestamp = now.toLocaleString("en-CA", {
     hour12: false
 }).replace(",", "");
 
-const payload = {
+// LOOP EACH PARTICIPANT AND SEND INDIVIDUALLY
+const sendRequests = participants.map(p => {
+
+  const payload = {
     timestamp: timestamp,
     guestType: guestTypeSelect.value,
     roomNumber: roomNumberInput.value || "",
-    participants: participants,
+
+    // ✅ MATCHES GOOGLE SCRIPT
+    firstName: p.firstName,
+    lastName: p.lastName,
+    age: p.age,
+    ageClassification: p.classification,
+
     guardianName: guardianInput ? guardianInput.value : "",
     privacyConsent: privacyCheckbox.checked ? "Yes" : "No",
     agreementAccepted: "Yes",
     signatureUrl: signatureData
-};
+  };
 
-console.log("SENDING FULL PAYLOAD:", payload);
+  console.log("SENDING:", payload);
 
-fetch("https://script.google.com/macros/s/AKfycbzW-tB97UEzLWb50Fy7nB-zMW09xWyn5xHjgPTf24KBiQfcJrWPd1apfbQj-KHR7MQC/exec", {
+  return fetch("https://script.google.com/macros/s/AKfycbzW-tB97UEzLWb50Fy7nB-zMW09xWyn5xHjgPTf24KBiQfcJrWPd1apfbQj-KHR7MQC/exec", {
     method: "POST",
     body: JSON.stringify(payload)
-})
+  });
+
+});
+
+// WAIT FOR ALL REQUESTS
+Promise.all(sendRequests)
 .then(() => {
-    alert("Waiver submitted successfully!");
-    resetWaiverForm();
+  alert("Waiver submitted successfully!");
+  resetWaiverForm();
 })
 .catch(error => {
-    alert("Submission failed. Please try again.");
-    console.error(error);
+  alert("Submission failed. Please try again.");
+  console.error(error);
 })
 .finally(() => {
-    submitButton.disabled = false;
-    submitButton.textContent = "Submit Waiver";
+  submitButton.disabled = false;
+  submitButton.textContent = "Submit Waiver";
 });
 
 	}
