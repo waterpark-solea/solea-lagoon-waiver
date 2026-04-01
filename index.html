@@ -287,8 +287,14 @@ button {
     transition: background 150ms;
 }
 
-button:hover { background: #162c42; }
-button:disabled { opacity: 0.6; cursor: wait; }
+button:hover { 
+    background: #162c42; 
+}
+
+button:disabled { 
+    opacity: 0.6; 
+    cursor: wait; 
+}
 
 .clear-btn {
     background: #b8860b;
@@ -296,6 +302,34 @@ button:disabled { opacity: 0.6; cursor: wait; }
 
 .clear-btn:hover {
     background: #9c730a;
+}
+
+/* ✅ NEW REMOVE PARTICIPANT BUTTON */
+.remove-btn {
+    background: #ffffff;
+    color: #c62828;
+    border: 1px solid #c62828;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    width: auto; /* important: don't stretch full width */
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.remove-btn:hover {
+    background: #c62828;
+    color: #ffffff;
+}
+
+/* ✅ MOBILE FIX */
+@media (max-width: 768px) {
+    .remove-btn {
+        align-self: flex-end;
+        margin-top: 6px;
+    }
 }
 
 /* =========================================================
@@ -844,7 +878,9 @@ function addParticipant() {
        oninput="checkAge(this)">
                 <small class="age-status"></small>
             </div>
-            <button type="button" class="remove-btn" onclick="removeParticipant(this)">✕</button>
+            <button type="button" class="remove-btn" onclick="removeParticipant(this)">
+    Remove Participant
+			</button>
         </div>
     `;
     wrapper.appendChild(div);
