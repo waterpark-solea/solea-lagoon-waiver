@@ -349,10 +349,6 @@ button:disabled { opacity: 0.6; cursor: wait; }
     display: block;
 }
 
-/* =========================================================
-   RESPONSIVE DESIGN
-   ========================================================= */
-
 @media (max-width: 768px) {
 
     body {
@@ -385,6 +381,11 @@ button:disabled { opacity: 0.6; cursor: wait; }
     .participant-row {
         grid-template-columns: 1fr;
         gap: 8px;
+    }
+
+    /* ✅ ADD THIS EXACTLY HERE */
+    .participant-item .participant-row input:first-of-type {
+        margin-top: 20px;
     }
 
     .participant-number {
