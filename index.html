@@ -330,12 +330,16 @@ button:disabled {
     color: #ffffff;
 }
 
-/* ✅ MOBILE FIX */
-@media (max-width: 768px) {
-    .remove-btn {
-        align-self: flex-end;
-        margin-top: 6px;
-    }
+/* ✅ MOBILE FIX FOR PARTICIPANTS */
+.participant-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.remove-btn {
+    align-self: flex-end;
+    margin-top: 6px;
+}
 }
 
 /* =========================================================
