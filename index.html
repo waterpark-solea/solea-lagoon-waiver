@@ -325,6 +325,8 @@ button:disabled {
     width: auto; /* important: don't stretch full width */
     white-space: nowrap;
     transition: all 0.2s ease;
+	margin-top: 6px;
+	align-self: flex-start; /* ✅ ADD THIS HERE */
 }
 
 
@@ -336,10 +338,7 @@ button:disabled {
         flex-direction: column;
         gap: 8px;
     }
-	.remove-btn {
-    margin-top: 6px; /* tighten spacing */
-}
-
+	
  }
 
 /* =========================================================
@@ -894,10 +893,20 @@ function addParticipant() {
 }
 
 function removeParticipant(button) {
+    const items = document.querySelectorAll(".participant-item");
+
+    if (items.length === 1) {
+        alert("At least one participant is required.");
+        return;
+    }
+
     button.closest(".participant-item").remove();
+
     participantCount = document.querySelectorAll(".participant-item").length;
+
     document.querySelectorAll(".participant-number")
         .forEach((num, index) => num.textContent = (index + 1) + ".");
+
     updateGuardianVisibility();
 }
 
