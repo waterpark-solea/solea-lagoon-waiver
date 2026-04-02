@@ -331,15 +331,20 @@ button:disabled {
 }
 
 /* ✅ MOBILE FIX FOR PARTICIPANTS */
-.participant-row {
-    display: flex;
-    flex-direction: column;
-}
+@media (max-width: 768px) {
 
-.remove-btn {
-    align-self: flex-end;
-    margin-top: 6px;
-}
+    .participant-row {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .remove-btn {
+        align-self: flex-end;
+        margin-top: 6px;
+        position: static; /* important fix */
+    }
+
 }
 
 /* =========================================================
