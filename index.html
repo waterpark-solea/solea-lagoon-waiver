@@ -190,7 +190,19 @@ input[type="number"] {
     display: grid;
     grid-template-columns: auto 1.5fr 1.5fr 1fr auto;
     gap: 12px;
-    align-items: center; /* ✅ better vertical alignment */
+    align-items: center; /* ✅ ensures all fields align vertically */
+}
+
+/* ✅ FIX: Align age input properly */
+.age-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centers input vertically */
+}
+
+/* ✅ OPTIONAL: make all inputs perfectly equal height */
+.participant-row input {
+    height: 42px;
 }
 
 .participant-number {
