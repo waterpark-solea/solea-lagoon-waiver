@@ -186,11 +186,10 @@ input[type="number"] {
    PARTICIPANT SECTION
    ========================================================= */
 
-.participant-row {
-    display: grid;
-    grid-template-columns: auto 1.5fr 1.5fr 1fr auto;
-    gap: 12px;
-    align-items: center; /* ✅ ensures all fields align vertically */
+.age-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* ✅ align top instead of center */
 }
 
 /* ✅ FIX: Align age input properly */
