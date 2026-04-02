@@ -340,15 +340,7 @@ button:disabled {
         gap: 8px;
     }
 
-  .remove-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 6px 10px;
-    font-size: 12px;
-}
-
-}
+ }
 
 /* =========================================================
    PRIVACY SECTION
@@ -562,6 +554,13 @@ input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+	@media (min-width: 768px) {
+    .participant-row {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
 }
 </style>
 </head>
