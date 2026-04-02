@@ -185,6 +185,13 @@ input[type="number"] {
 /* =========================================================
    PARTICIPANT SECTION
    ========================================================= */
+	
+
+.participant-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
 .age-wrapper {
     display: flex;
@@ -427,23 +434,13 @@ button:disabled {
         gap: 8px;
     }
 
-    /* ✅ ADD THIS EXACTLY HERE */
-    .participant-item .participant-row input:first-of-type {
-        margin-top: 40px;
-    }
-
+    
     .participant-number {
         height: auto;
         margin-bottom: 4px;
     }
 
-    .remove-btn {
-        position: absolute;
-        right: 0;
-        top: 0;
-        padding: 12px;
-    }
-
+   
     .participant-item {
         position: relative;
         padding-right: 10px;
