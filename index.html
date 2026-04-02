@@ -199,6 +199,9 @@ input[type="number"] {
     flex-direction: column;
     justify-content: center; /* centers input vertically */
 }
+	.age-wrapper input {
+    margin: 0; /* ✅ removes hidden spacing */
+}
 
 /* ✅ OPTIONAL: make all inputs perfectly equal height */
 .participant-row input {
@@ -219,11 +222,6 @@ input[type="number"] {
 
 .participant-item {
     margin-bottom: 12px;
-}
-
-.participant-row .age-wrapper {
-    display: flex;
-    flex-direction: column;
 }
 
 /* Hover */
