@@ -197,7 +197,12 @@ input[type="number"] {
 .age-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* centers input vertically */
+    justify-content: center;
+    height: 42px; /* ✅ match input height */
+}
+	.age-status {
+    position: absolute;
+    margin-top: 44px; /* pushes label below without affecting alignment */
 }
 	.age-wrapper input {
     margin: 0; /* ✅ removes hidden spacing */
