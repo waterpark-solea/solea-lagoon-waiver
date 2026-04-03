@@ -170,6 +170,11 @@ h2 {
     margin-bottom: 15px;
 }
 
+.field-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 input[type="text"],
 input[type="date"],
 input[type="number"] {
@@ -986,8 +991,6 @@ function showError(inputElement, message) {
     if (!wrapper) {
         wrapper = document.createElement("div");
         wrapper.className = "field-wrapper";
-        wrapper.style.display = "flex";
-        wrapper.style.flexDirection = "column";
         inputElement.parentNode.insertBefore(wrapper, inputElement);
         wrapper.appendChild(inputElement);
     }
