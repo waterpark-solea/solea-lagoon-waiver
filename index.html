@@ -548,6 +548,12 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+/* NEW: full width remove button */
+.full-remove {
+    width: 100%;
+    margin-top: 8px;
+}
 	
 </style>
 </head>
@@ -861,33 +867,40 @@ function addParticipant() {
         alert("Maximum of 10 participants allowed.");
         return;
     }
-    participantCount++;
-    const wrapper = document.getElementById("participants-wrapper");
-    const div = document.createElement("div");
-    div.className = "participant-item";
-    div.innerHTML = `
-        <div class="participant-row">
-            <span class="participant-number">${participantCount}.</span>
-            <input autocomplete="given-name" type="text" name="first_name[]" placeholder="First Name" required>
-            <input autocomplete="family-name" type="text" name="last_name[]" placeholder="Last Name" required>
-            <div class="age-wrapper">
-                <input type="number"
-       name="age[]"
-       placeholder="Age"
-       min="1"
-       max="99"
-       inputmode="numeric"
-       required
-       oninput="checkAge(this)">
-                <small class="age-status"></small>
-            </div>
-<button type="button" class="remove-btn" onclick="removeParticipant(this)">
-    Remove
-</button>
+    /* UPDATED: Move Remove button below fields */
+participantCount++;
+const wrapper = document.getElementById("participants-wrapper");
+const div = document.createElement("div");
+div.className = "participant-item";
+
+div.innerHTML = `
+    <div class="participant-row">
+        <span class="participant-number">${participantCount}.</span>
+
+        <input autocomplete="given-name" type="text" name="first_name[]" placeholder="First Name" required>
+
+        <input autocomplete="family-name" type="text" name="last_name[]" placeholder="Last Name" required>
+
+        <div class="age-wrapper">
+            <input type="number"
+                name="age[]"
+                placeholder="Age"
+                min="1"
+                max="99"
+                inputmode="numeric"
+                required
+                oninput="checkAge(this)">
+            <small class="age-status"></small>
         </div>
-    `;
-    wrapper.appendChild(div);
-}
+    </div>
+
+    <!-- ✅ MOVED BUTTON BELOW -->
+    <button type="button" class="remove-btn full-remove" onclick="removeParticipant(this)">
+        Remove Participant
+    </button>
+`;
+
+wrapper.appendChild(div);
 
 function removeParticipant(button) {
     const items = document.querySelectorAll(".participant-item");
