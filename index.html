@@ -310,20 +310,24 @@ button:disabled {
     background: #9c730a;
 }
 
-/* ✅ NEW REMOVE PARTICIPANT BUTTON */
 .remove-btn {
     background: #ffffff;
     color: #c62828;
     border: 1px solid #c62828;
     border-radius: 8px;
-    padding: 8px 12px;
-    font-size: 13px;
+
+    height: 36px;          /* ADD THIS */
+    padding: 6px 10px;     /* MATCH SA INPUT */
+    font-size: 14px;       /* optional but recommended */
+
     cursor: pointer;
-    width: auto; /* important: don't stretch full width */
+    width: auto;
     white-space: nowrap;
     transition: all 0.2s ease;
-	margin-top: 6px;
-	align-self: flex-start; /* ✅ ADD THIS HERE */
+    margin-top: 6px;
+    align-self: flex-start;
+
+    box-sizing: border-box; /* ADD THIS */
 }
 
 
