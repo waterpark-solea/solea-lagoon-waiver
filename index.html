@@ -902,7 +902,6 @@ div.innerHTML = `
 
 wrapper.appendChild(div);
 }
-	
 function removeParticipant(button) {
     const items = document.querySelectorAll(".participant-item");
 
@@ -919,7 +918,8 @@ function removeParticipant(button) {
         .forEach((num, index) => num.textContent = (index + 1) + ".");
 
     updateGuardianVisibility();
-}
+}	
+
 
 function checkAge(input) {
     input.value = input.value.replace(/\D/g, "").slice(0, 2);
